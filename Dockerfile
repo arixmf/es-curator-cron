@@ -1,9 +1,9 @@
-FROM alpine:latest
+FROM alpine:3.12.0
 
-LABEL elasticsearch-curator=5.4.0
+ARG CURATOR_VERSION
 
 RUN apk --update add python py-setuptools py-pip && \
-    pip install elasticsearch-curator==5.4.0 && \
+    pip install elasticsearch-curator==${CURATOR_VERSION} && \
     apk del py-pip && \
     rm -rf /var/cache/apk/*
 
